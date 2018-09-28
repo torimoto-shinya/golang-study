@@ -470,6 +470,23 @@ func main() {
 }
 ```
 
+### Range
+* forで使う
+* スライスやマップを一つずつ反復処理できる
+
+```
+package main
+
+import "fmt"
+
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+func main() {
+	for i, v := range pow {  // iはインデックス、vはインデックスの場所の要素のコピー
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+}
+```
 
 ### 疑問
 * ポインタの使いどころ
