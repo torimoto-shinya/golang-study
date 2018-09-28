@@ -470,6 +470,43 @@ func main() {
 }
 ```
 
+### Range
+* forで使う
+* スライスやマップを一つずつ反復処理できる
+
+```
+package main
+
+import "fmt"
+
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+func main() {
+	for i, v := range pow {  // iはインデックス、vはインデックスの場所の要素のコピー
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+}
+```
+
+* インデックスや値は、`_` へ代入することで捨てることができる
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	pow := make([]int, 10)
+	for i := range pow {  // インデックスだけ必要な場合
+		pow[i] = 1 << uint(i) // == 2**i
+	}
+	for _, value := range pow {
+		fmt.Printf("%d\n", value)
+	}
+}
+```
+
+
 
 ### 疑問
 * ポインタの使いどころ
