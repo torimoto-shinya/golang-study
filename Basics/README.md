@@ -365,5 +365,112 @@ func main() {
 }
 ```
 
+* `var a [10]int` において、以下のスライスは等価である
+
+```
+a[0:10]
+a[:10]
+a[0:]
+a[:]
+```
+
+* スライスは長さ（length）と容量（capacity）を持つ
+```
+package main
+
+import "fmt"
+
+func main() {
+    a := []int{1, 2, 3, 4, 5, 6}
+    fmt.Printf("len=%d cap=%d %v\n", len(a), cap(a), a)
+}
+```
+
+* スライスのゼロ値は `nil`
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    var s []int
+    fmt.Println(s, len(s), cap(s))
+    if s == nil {
+        fmt.Println("nil!")
+    }
+}
+```
+
+* スライスは `make()` でも作れる。
+* `make([]int, length, [capacity])`
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    a := make([]int, 5)
+    b := make([]int, 0, 5)
+
+    fmt.Printf("%s len=%d cap=%d %v\n", len(a), cap(a), a)
+    fmt.Printf("%s len=%d cap=%d %v\n", len(b), cap(b), b)
+}
+```
+
+* スライスはネストできる
+
+```
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    // Create a tic-tac-toe board.
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+
+	// The players take turns.
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+    for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+}
+
+```
+
+* スライスのappend
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    var s []int
+    fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+
+    s = append(s, 0)
+    fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s) // サイズが足りない時は、capが増える
+
+    s = append(s, 1, 2, 4, 5)
+    fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s) // capは倍々で増えていく
+}
+```
+
+
 ### 疑問
 * ポインタの使いどころ
+* len()やcap()などは、どの名前空間から参照しているのか？（組み込み関数だから気にしなくて良い？）
