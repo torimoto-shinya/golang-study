@@ -34,7 +34,7 @@ func main() {
   * `const` ステートメント
     * `:=` は使えない
     * 文字(character)、文字列(string)、boolean、数値(numeric)のみで使える
-    * 数値は高精度な値である 
+    * 数値は高精度な値である
 * 変数 `v` 、型 `T` があった場合、 `T(v)` は、変数 `v` を `T` 型へ変換する
 
 ### 疑問
@@ -528,6 +528,59 @@ func main() {
 	fmt.Println(m["Bell Labs"])
 }
 ```
+
+* mapの操作
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	m := make(map[string]int)
+
+	m["Answer"] = 42 // 挿入
+	fmt.Println("The value:", m["Answer"])　// 参照
+
+	m["Answer"] = 48
+	fmt.Println("The value:", m["Answer"])
+
+	delete(m, "Answer")　// 消去
+	fmt.Println("The value:", m["Answer"])
+
+	v, ok := m["Answer"]　// 2つめの変数は存在確認
+	fmt.Println("The value:", v, "Present?", ok)
+}
+```
+
+### Function values
+* 関数も変数扱いできる
+
+```
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+func main() {
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
+	fmt.Println(math.Sqrt(5*5 + 12*12) // 上の式と同義
+
+	fmt.Println(compute(math.Pow))
+	fmt.Println(math.Pow(3, 4))   // 上の式と同義
+}
+```
+
+
 ### slice演習問題
 ```
 package main
@@ -550,8 +603,34 @@ func Pic(dx, dy int) [][]uint8 {
 func main() {
 	// dx, dyはShowの中にconstで定義されている
 	// https://github.com/golang/tour/blob/master/pic/pic.go#L15
-	
+
 	pic.Show(Pic)
+}
+
+```
+
+### map演習問題
+
+```
+package main
+
+import (
+	"golang.org/x/tour/wc"
+	"strings"
+	"fmt"
+)
+
+func WordCount(s string) map[string]int {
+	fmt.Println(strings.Fields(s))
+	ret := make(map[string]int)
+	for _, word := range strings.Fields(s) {
+		ret[word]++
+	}
+	return ret
+}
+
+func main() {
+	wc.Test(WordCount)
 }
 
 ```
