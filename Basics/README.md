@@ -580,6 +580,9 @@ func main() {
 }
 ```
 
+* Goの関数はクロージャである。
+
+
 
 ### slice演習問題
 ```
@@ -633,6 +636,30 @@ func main() {
 	wc.Test(WordCount)
 }
 
+```
+
+### Function Exercise
+```
+package main
+
+import "fmt"
+
+// fibonacci is a function that returns
+// a function that returns an int.
+func fibonacci() func() int {
+    prev, next := 0, 1
+    return func() int {
+        prev, next = next, prev+next
+        return next
+    }
+}
+
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
+}
 ```
 
 ### 疑問
