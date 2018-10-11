@@ -1,7 +1,9 @@
-# Concurrency
+# Exercise: Equivalent Binary Trees
 
+## URL
+https://tour.golang.org/concurrency/7
 
-### バイナリツリー演習問題
+## Answer
 ```
 package main
 

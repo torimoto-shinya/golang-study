@@ -209,32 +209,6 @@ func main() {
 ```
 
 
-
-### Exercise: Loops and Functions
-* 平方根（sqrt）の実装
-
-```
-package main
-
-import (
-	"fmt"
-	"math"
-)
-
-func Sqrt(x float64) float64 {
-	z := 1.0
-	for i := 0; i < 10; i++ {
-		z -= (z*z - x) / (2*z)
-	}
-	return z
-}
-
-func main() {
-	fmt.Println(Sqrt(2))
-	fmt.Println(math.Sqrt(2))
-}
-```
-
 ## More types
 
 ### Pointers
@@ -581,86 +555,6 @@ func main() {
 ```
 
 * Goの関数はクロージャである。
-
-
-
-### slice演習問題
-```
-package main
-
-import (
-	"golang.org/x/tour/pic"
-)
-
-func Pic(dx, dy int) [][]uint8 {
-    picture := make([][]uint8, dy)
-    for y := range picture {
-        picture[y] = make([]uint8, dx)
-        for x := range picture[y] {
-            picture[y][x] = uint8(x*y)
-        }
-    }
-    return picture
-}
-
-func main() {
-	// dx, dyはShowの中にconstで定義されている
-	// https://github.com/golang/tour/blob/master/pic/pic.go#L15
-
-	pic.Show(Pic)
-}
-
-```
-
-### map演習問題
-
-```
-package main
-
-import (
-	"golang.org/x/tour/wc"
-	"strings"
-	"fmt"
-)
-
-func WordCount(s string) map[string]int {
-	fmt.Println(strings.Fields(s))
-	ret := make(map[string]int)
-	for _, word := range strings.Fields(s) {
-		ret[word]++
-	}
-	return ret
-}
-
-func main() {
-	wc.Test(WordCount)
-}
-
-```
-
-### Function Exercise
-```
-package main
-
-import "fmt"
-
-// fibonacci is a function that returns
-// a function that returns an int.
-func fibonacci() func() int {
-    prev, next := 0, 1
-    return func() int {
-        prev, next = next, prev+next
-        return next
-    }
-}
-
-func main() {
-	f := fibonacci()
-	for i := 0; i < 10; i++ {
-		fmt.Println(f())
-	}
-}
-```
 
 ### 疑問
 * ポインタの使いどころ
