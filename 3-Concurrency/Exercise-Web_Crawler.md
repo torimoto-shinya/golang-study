@@ -43,48 +43,55 @@ func (c *SafeCache) IsVisited(url string) bool {
 
 // Crawl uses fetcher to recursively crawl
 // pages starting with url, to a maximum of depth.
-func Crawl(url string, depth int, fetcher Fetcher, ch chan FetchResult) {
-	defer close(ch)
+func Crawl(url string, depth int, fetcher Fetcher) {
 
 	// mapの読み書きを保証するために排他制御を行う
 	cache := SafeCache{b: make(map[string]bool)}
 
-	var f func(url string, depth int, fetcher Fetcher, ch chan FetchResult)
-	f = func(url string, depth int, fetcher Fetcher, ch chan FetchResult) {
-		if depth <= 0 {
-			return
-		}
-		body, urls, err := fetcher.Fetch(url)
-		cache.Visited(url)
+	var crawl func(url string, depth int, fetcher Fetcher, ch chan FetchResult)
+	crawl = func(url string, depth int, fetcher Fetcher, ch chan FetchResult) {
 
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		// チャネルに送信
-		//fmt.Printf("[debug] found: %s %q\n", url, body)
-		var result FetchResult
-		result.url   = url
-		result.body  = body
-		result.err = err
-		ch <- result
+		var f func(url string, depth int, fetcher Fetcher, ch chan FetchResult)
+		f = func(url string, depth int, fetcher Fetcher, ch chan FetchResult) {
+			if depth <= 0 {
+				return
+			}
+			body, urls, err := fetcher.Fetch(url)
+			cache.Visited(url)
 
-		for _, u := range urls {
-			if !cache.IsVisited(u) {
-				f(u, depth-1, fetcher, ch)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+			// チャネルに送信
+			var result FetchResult
+			result.url  = url
+			result.body = body
+			result.err  = err
+			ch <- result
+
+			for _, u := range urls {
+				//fmt.Printf("url: %s\n", u)
+				if !cache.IsVisited(u) {
+					f(u, depth-1, fetcher, ch)
+				}
 			}
 		}
+		f(url, depth, fetcher, ch)
+		close(ch)
 	}
-	f(url, depth, fetcher, ch)
-}
 
-func main() {
 	ch := make(chan FetchResult)
 
-	go Crawl("https://golang.org/", 4, fetcher, ch)
+	go crawl(url, depth, fetcher, ch)
 	for r := range ch {
 		fmt.Printf("found: %s %q\n", r.url, r.body)
 	}
+
+}
+
+func main() {
+	Crawl("https://golang.org/", 4, fetcher)
 }
 
 // fakeFetcher is Fetcher that returns canned results.
