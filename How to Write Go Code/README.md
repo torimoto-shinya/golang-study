@@ -44,7 +44,11 @@ go  # GOPATHで設定したフォルダ
 * `go test` コマンドと `testing` パッケージで構成される軽量なテストフレームワークがある
 * パッケージと同一ディレクトリに、 `packagename_test.go` を配置する
 * テストを実行するファイルの名前に規約はあるのか？
-  * パッケージ名と同一にする必要があるっぽい
+  * パッケージ名と同一にする必要があるっぽい。別名にすると以下のように怒られた
+  ```
+  $ go test .\src\github.com\torimoto-shinya\stringutil
+  ?       github.com/torimoto-shinya/stringutil   [no test files]
+  ```
 
 ### リモートのパッケージ
 * `go get [path/to/package]` で取得できる
