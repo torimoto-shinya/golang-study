@@ -1,18 +1,18 @@
 # golang-study
 
 ## 勉強メモ
-[A Tour of Go](A%20Tour%20of%20Go)
-[How to Write Go Code](How%20to%20Write%20Go%20Code)
-[Effective Go](Effective%20Go)
+* [A Tour of Go](A%20Tour%20of%20Go)
+* [How to Write Go Code](How%20to%20Write%20Go%20Code)
+* [Effective Go](Effective%20Go)
 
 ## ソースコード
 1. [Hello World](https://github.com/torimoto-shinya/hello)
 1. [stringutil](https://github.com/torimoto-shinya/stringutil)
-  * Testing Sample -> https://golang.org/doc/code.html#Testing
+    * Testing Sample -> https://golang.org/doc/code.html#Testing
 1. [dlroW olleH](https://github.com/torimoto-shinya/olleh)
-  * 上記stringutilパッケージを実際に使ってみたサンプル
+    * 上記stringutilパッケージを実際に使ってみたサンプル
 1. [Web Crawler](https://github.com/torimoto-shinya/web-crawler)
-  * A Tour of Go Exercise -> https://tour.golang.org/concurrency/10
+    * A Tour of Go Exercise -> https://tour.golang.org/concurrency/10
 
 ## 各ソースの実行方法
 ### 前提条件
@@ -22,7 +22,7 @@
 * 環境変数 `PATH` に `GOPATH/bin` を通す
 
 ### 注意
-* Windowsの場合は、`$(go env GOPATH)` の部分を `%GOPATH%` にして、ディレクトリの文字列になる部分をダブルクォーテーションで囲う
+* Windowsの場合は、`$(go env GOPATH)` の部分を `%GOPATH%` にして、パスの部分をダブルクォーテーションで囲う
   * 例： `mkdir $(go env GOPATH)/src/github.com/torimoto-shinya` -> `mkdir "%GOPATH%/src/github.com/torimoto-shinya"`
 
 ### 1. Hello World
