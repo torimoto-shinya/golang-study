@@ -6,13 +6,7 @@
 * [Effective Go](Effective%20Go)
 
 ## ソースコード
-1. [Hello World](https://github.com/torimoto-shinya/hello)
-1. [stringutil](https://github.com/torimoto-shinya/stringutil)
-    * Testing Sample -> https://golang.org/doc/code.html#Testing
-1. [dlroW olleH](https://github.com/torimoto-shinya/olleh)
-    * 上記stringutilパッケージを実際に使ってみたサンプル
-1. [Web Crawler](https://github.com/torimoto-shinya/web-crawler)
-    * A Tour of Go Exercise -> https://tour.golang.org/concurrency/10
+https://github.com/torimoto-shinya/golang-study-examples
 
 ## 各ソースの実行方法
 ### 前提条件
@@ -25,17 +19,16 @@
 * Windowsの場合は、`$(go env GOPATH)` の部分を `%GOPATH%` にして、パスの部分をダブルクォーテーションで囲う
   * 例： `mkdir $(go env GOPATH)/src/github.com/torimoto-shinya` -> `mkdir "%GOPATH%/src/github.com/torimoto-shinya"`
 
-### 1. Hello World
-#### Clone
+### リポジトリのクローン
 ```
 $ mkdir $(go env GOPATH)/src/github.com/torimoto-shinya
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya
-$ git clone git@github.com:torimoto-shinya/hello.git
+$ git clone git@github.com:torimoto-shinya/golang-study-examples.git
 ```
 
+### 1. Hello World
 #### install
 ```
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/hello
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/hello
 $ go install
 ```
 
@@ -47,40 +40,29 @@ Hello, world.
 ```
 
 ### 2. stringutil
-* 簡単なテストのサンプルプログラム
 
-#### clone
-```
-$ mkdir $(go env GOPATH)/src/github.com/torimoto-shinya
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya
-$ git clone git@github.com:torimoto-shinya/stringutil.git
-```
+* 簡単なテストのサンプルプログラム
 
 #### Testing
 ```
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/stringutil
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/stringutil
 $ go test
 PASS
-ok      github.com/torimoto-shinya/stringutil   0.078s
+ok      github.com/torimoto-shinya/golang-study-examples/stringutil   0.078s
 ```
 
-### 3. stringutilをパッケージとして使う
-* 上記Testingまで終わっている前提
+### 3. stringutilをライブラリとして使う
 
 #### build
 ```
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/stringutil
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/stringutil
 $ go build
 ```
 
-#### clone and install
+#### install
 ```
-# clone
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya
-$ git clone git@github.com:torimoto-shinya/olleh.git
-
-# install
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/olleh
+# olleh.go は stringutil ライブラリを使っています
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/olleh
 $ go install
 ```
 
@@ -91,16 +73,10 @@ $ olleh
 ```
 
 ### 4. Web Crawler
-#### clone
-```
-$ mkdir $(go env GOPATH)/src/github.com/torimoto-shinya
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya
-$ git clone git@github.com:torimoto-shinya/web-crawler.git
-```
 
 #### install
 ```
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/web-crawler
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/web-crawler
 $ go install
 ```
 
