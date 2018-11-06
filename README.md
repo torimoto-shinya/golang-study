@@ -22,6 +22,7 @@ https://github.com/torimoto-shinya/golang-study-examples
 ### リポジトリのクローン
 ```
 $ mkdir -p $(go env GOPATH)/src/github.com/torimoto-shinya
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya
 $ git clone git@github.com:torimoto-shinya/golang-study-examples.git
 ```
 
