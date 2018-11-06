@@ -17,11 +17,11 @@ https://github.com/torimoto-shinya/golang-study-examples
 
 ### 注意
 * Windowsの場合は、`$(go env GOPATH)` の部分を `%GOPATH%` にして、パスの部分をダブルクォーテーションで囲う
-  * 例： `mkdir $(go env GOPATH)/src/github.com/torimoto-shinya` -> `mkdir "%GOPATH%/src/github.com/torimoto-shinya"`
+  * 例： `mkdir -p $(go env GOPATH)/src/github.com/torimoto-shinya` -> `mkdir "%GOPATH%/src/github.com/torimoto-shinya"`
 
 ### リポジトリのクローン
 ```
-$ mkdir $(go env GOPATH)/src/github.com/torimoto-shinya
+$ mkdir -p $(go env GOPATH)/src/github.com/torimoto-shinya
 $ git clone git@github.com:torimoto-shinya/golang-study-examples.git
 ```
 
