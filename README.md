@@ -69,7 +69,7 @@ $ go run olleh.go
 #### Run Result
 ```
 $ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/web-crawler
-$ go run go run crawler.go
+$ go run crawler.go
 found: https://golang.org/ "The Go Programming Language"
 found: https://golang.org/pkg/ "Packages"
 found: https://golang.org/pkg/os/ "Package os"
