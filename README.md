@@ -56,30 +56,20 @@ $ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/strin
 $ go build
 ```
 
-#### install
+#### Run Result
 ```
 # olleh.go は stringutil ライブラリを使っています
 $ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/olleh
-$ go install
-```
-
-#### Run Result
-```
-$ olleh
+$ go run olleh.go
 !dlroW olleH
 ```
 
 ### 4. Web Crawler
 
-#### install
-```
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/web-crawler
-$ go install
-```
-
 #### Run Result
 ```
-$ web-crawler
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/web-crawler
+$ go run go run crawler.go
 found: https://golang.org/ "The Go Programming Language"
 found: https://golang.org/pkg/ "Packages"
 found: https://golang.org/pkg/os/ "Package os"
