@@ -27,16 +27,12 @@ $ git clone git@github.com:torimoto-shinya/golang-study-examples.git
 ```
 
 ### 1. Hello World
-#### install
-```
-$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/hello
-$ go install
-```
 
 #### Run Result
-* PATHに `GOPATH/bin` を通していれば、以下コマンドで実行可能
+
 ```
-$ hello
+$ cd $(go env GOPATH)/src/github.com/torimoto-shinya/golang-study-examples/hello
+$ go run hello.go
 Hello, world.
 ```
 
